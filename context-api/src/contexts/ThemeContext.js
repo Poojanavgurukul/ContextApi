@@ -13,7 +13,7 @@ const ThemeContextProvider =(props)=>{
         setIsLightTheme(!isLightTheme)
     } 
     return ( 
-        <ThemeContext.Provider value={{...themes,isLightTheme,toggleTheme:toggleTheme}}>
+        <ThemeContext.Provider value={{...themes,isLightTheme,toggleTheme}}>
             {props.children}
         </ThemeContext.Provider>
     );

@@ -1,21 +1,25 @@
+import BookDetails from './BookDetails';
+
+import { useContext } from 'react';
+import { BookContext } from '../contexts/BookContext';
 import { ThemeContext } from '../contexts/ThemeContext';
+
 const BookList =()=> {
-    return( 
-        <ThemeContext.Consumer>{(context)=>{
-        const {isLightTheme,light,dark} = context;
+        const {isLightTheme,light,dark} = useContext(ThemeContext);
+        const {books} = useContext(BookContext);
         const theme = isLightTheme ? light : dark;
-        return ( 
+
+        return books.length?( 
             <div className="book-list" style={{color:theme.syntax,background:theme.bg}}>
                 <ul>
-                    <li style={{background:theme.ui}}>The way of kings</li>
-                    <li style={{background:theme.ui}}>The name of wind</li>
-                    <li style={{background:theme.ui}}>The final empire</li>
+                    {books.map((book,index)=>(
+                        <BookDetails key={index} book={book} />
+                    ))} 
                 </ul>
             </div>
-         );
-        }}
-        </ThemeContext.Consumer>
-    )
+         ):(
+             <div className="empty">No Books to read. Hello free time :)</div>
+         )
 }
  
 export default BookList;
