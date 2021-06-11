@@ -1,15 +1,17 @@
 import { useContext, useState } from "react";
+import { useHistory } from "react-router";
 import { BookContext } from "../contexts/BookContext";
 
 const NewBookForm = () => {
-    const {dispatch} = useContext(BookContext);
+    const {dispatch,history} = useContext(BookContext);
     const [title,setTitle] = useState('');
     const [author,setAuthor] = useState('');
     const handleSubmit = (e) =>{
         e.preventDefault();
         dispatch({type:'ADD_BOOK',book:{title,author}});
-        setTitle('');
-        setAuthor('')
+        history.push('/')
+        // setTitle('');
+        // setAuthor('')
     }
     return ( 
         <form onSubmit={handleSubmit}>
