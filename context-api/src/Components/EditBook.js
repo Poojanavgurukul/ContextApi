@@ -22,9 +22,14 @@ const EditBook = () => {
         dispatch({type:'EDIT_BOOK', selectedBook});   
         history.push('/')
     }
-    const onHandleChandle=(e)=>{
-        setSelectedBook(e.target.name)
-    }
+    const onChangeTitle = (e) => {
+        console.log(selectedBook);
+        setSelectedBook({ ...selectedBook, title: e.target.value });
+      };
+      const onChangeAuthor = (e) => {
+        console.log(selectedBook);
+        setSelectedBook({ ...selectedBook, author: e.target.value });
+      };
     return ( 
         <div>
         <form onSubmit={onSubmit}>
@@ -34,7 +39,7 @@ const EditBook = () => {
             name="title"
             required
             value={selectedBook.title}
-            onChange={onHandleChandle}
+            onChange={onChangeTitle}
             />
             <label>Author</label>
             <input
@@ -42,7 +47,7 @@ const EditBook = () => {
             name="author"
             required
             value={selectedBook.author}
-            onChange={onHandleChandle}
+            onChange={onChangeAuthor}
             />
             <button>Update</button>
         </form>

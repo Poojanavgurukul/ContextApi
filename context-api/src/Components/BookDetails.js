@@ -8,7 +8,7 @@ const BookDetails = ({book}) => {
     const theme = isLightTheme ? light : dark;
     const {dispatch} = useContext(BookContext);
     return ( 
-        <li style={{background:theme.ui}} /*onClick={()=>dispatch({type:'REMOVE_BOOK',id:book.id})}*/>
+        <li style={{background:theme.ui}}>
             <div>{book.title}</div>
             <div>{book.author}</div>
             {book.id}
@@ -18,8 +18,9 @@ const BookDetails = ({book}) => {
             }
             }}
             >
-                <button onClick={() => dispatch({type:'EDIT_BOOK',id:book.id})}>edit</button>
+            <button>edit</button>
             </Link>
+            <button onClick={()=>dispatch({type:'REMOVE_BOOK',id:book.id})}>delete</button>
         </li>
      );
 }

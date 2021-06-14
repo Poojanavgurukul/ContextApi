@@ -10,14 +10,14 @@ export const bookReducer = (state,action) =>{
         case 'REMOVE_BOOK':
             return state.filter(book => book.id !== action.id)
         case 'EDIT_BOOK':
-            const updatedBook = action.payload;
+            const updatedBook = action.selectedBook;
             const updatedBooks = state.map(book=>{
                 if(book.id===updatedBook.id){
                     return updatedBook
                 }
                 return book
             })
-            return {books:updatedBooks}
+            return updatedBooks
         default:
             return state
     }
